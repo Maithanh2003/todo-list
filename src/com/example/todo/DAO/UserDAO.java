@@ -64,4 +64,16 @@ public class UserDAO {
 		ps.executeUpdate();
 		conn.close();
 	}
+	public static void updateProfile(int id, String fullName, String phone, String email) throws Exception {
+	    Connection conn = DBUtil.getConnection();
+	    PreparedStatement ps = conn.prepareStatement(
+	        "UPDATE users SET full_name = ?, phone = ?, email = ? WHERE id = ?"
+	    );
+	    ps.setString(1, fullName);
+	    ps.setString(2, phone);
+	    ps.setString(3, email);
+	    ps.setInt(4, id);
+	    ps.executeUpdate();
+	    conn.close();
+	}
 }

@@ -24,7 +24,7 @@ public class AuthServlet extends HttpServlet {
 			if (user != null) {
 				req.getSession().setAttribute("user", user);
 				if (Role.ADMIN.equals(user.getRole())) {
-					res.sendRedirect("admin_dashboard.jsp");
+					res.sendRedirect("admin-dashboard");
 				} else {
 					res.sendRedirect("todo");
 				}

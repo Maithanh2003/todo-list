@@ -1,4 +1,6 @@
 eclipse.preferences.version=1
+encoding//WebContent/components/sidebar.jsp=UTF-8
+encoding//WebContent/components/user-sidebar.jsp=UTF-8
 encoding//WebContent/edit.jsp=UTF-8
 encoding//WebContent/index.jsp=UTF-8
 encoding//WebContent/view.jsp=UTF-8

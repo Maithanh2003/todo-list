@@ -93,7 +93,7 @@ public class TodoServlet extends HttpServlet {
 			String idStr = req.getParameter("id");
 
 			if (idStr != null && !idStr.isEmpty()) {
-				// Cập nhật task
+				// --- Cập nhật task ---
 				UpdateTaskRequest updateReq = new UpdateTaskRequest(req);
 				if (!updateReq.isValid()) {
 					res.sendRedirect("todo?error=invalid_input");
@@ -106,11 +106,10 @@ public class TodoServlet extends HttpServlet {
 					return;
 				}
 
-				TodoDAO.update(updateReq.getId(), user.getId(), updateReq.getTask(), updateReq.isCompleted(),
-						categoryId, updateReq.getDeadline());
+				TodoDAO.update(updateReq.getId(), user.getId(), updateReq.getTask(), updateReq.getCompleted(),
+						categoryId, updateReq.getDeadline(), updateReq.getDescription());
 
 			} else {
-				// Tạo task mới
 				CreateTaskRequest createReq = new CreateTaskRequest(req);
 				if (!createReq.isValid()) {
 					res.sendRedirect("todo?error=invalid_input");
@@ -123,7 +122,8 @@ public class TodoServlet extends HttpServlet {
 					return;
 				}
 
-				TodoDAO.insert(user.getId(), createReq.getTask(), categoryId, createReq.getDeadline());
+				TodoDAO.insert(user.getId(), createReq.getTask(), createReq.getCompleted(), categoryId,
+						createReq.getDeadline(), createReq.getDescription());
 			}
 
 			res.sendRedirect("todo");
@@ -132,4 +132,5 @@ public class TodoServlet extends HttpServlet {
 			throw new ServletException(e);
 		}
 	}
+
 }

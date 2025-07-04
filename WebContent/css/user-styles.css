@@ -1,0 +1,132 @@
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #6c757d;
+    --success-color: #28a745;
+    --danger-color: #dc3545;
+    --info-color: #17a2b8;
+    --background-start: #d4f0d4;
+    --background-end: #d4c4fb;
+    --header-bg: #4CAF50;
+    --row-alt: #e6e6fa;
+    --row-base: #f0f8ff;
+    --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --border-radius: 10px;
+    --text-dark: #333;
+}
+
+body {
+    background: linear-gradient(135deg, var(--background-start), var(--background-end));
+    font-family: 'Inter', sans-serif;
+    color: var(--text-dark);
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 900px;
+    margin-top: 3rem;
+    padding: 0 15px;
+}
+
+.navbar {
+    background-color: #fff;
+    box-shadow: var(--card-shadow);
+    padding: 1rem 2rem;
+    border-radius: var(--border-radius);
+}
+
+.card {
+    border: none;
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.card-header {
+    background-color: var(--header-bg);
+    color: #fff;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 1.5rem;
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+    font-weight: 600;
+}
+
+.card-body {
+    padding: 2rem;
+}
+
+.todo-card {
+    border-radius: var(--border-radius);
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+    background-color: var(--row-base);
+}
+
+.todo-card:nth-child(even) {
+    background-color: var(--row-alt);
+}
+
+.todo-card:hover {
+    background-color: #f8f9fa;
+}
+
+.completed {
+    text-decoration: line-through;
+    opacity: 0.7;
+    color: #888;
+}
+
+.btn {
+    border-radius: 25px;
+    padding: 0.5rem 1.5rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+    background-color: darken(var(--primary-color), 10%);
+    border-color: darken(var(--primary-color), 10%);
+}
+
+.btn-outline-success, .btn-outline-danger, .btn-outline-primary, .btn-outline-info {
+    border-radius: 25px;
+    font-size: 0.875rem;
+}
+
+.form-control, .form-select {
+    border-radius: var(--border-radius);
+    border: 1px solid #ced4da;
+    padding: 0.75rem;
+}
+
+.alert {
+    border-radius: var(--border-radius);
+    padding: 1rem;
+}
+
+h1, h2, h3, h4, h5 {
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.text-muted {
+    font-size: 0.875rem;
+}
+
+.actions a {
+    margin-left: 0.5rem;
+    font-size: 1rem;
+}
+
+.actions .btn-sm {
+    padding: 0.25rem 0.5rem;
+}

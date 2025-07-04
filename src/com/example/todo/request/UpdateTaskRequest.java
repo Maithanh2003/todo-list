@@ -4,45 +4,60 @@ import jakarta.servlet.http.HttpServletRequest;
 import java.sql.Date;
 
 public class UpdateTaskRequest {
-	private int id;
-	private String task;
-	private boolean completed;
-	private String categoryName;
-	private Date deadline;
+    private int id;
+    private String task;
+    private String categoryName;
+    private Date deadline;
+    private String completed;
+    private String description;
 
-	public UpdateTaskRequest(HttpServletRequest req) {
-		this.id = Integer.parseInt(req.getParameter("id"));
-		this.task = req.getParameter("task");
-		this.completed = req.getParameter("completed") != null;
-		this.categoryName = req.getParameter("categoryName");
+    public UpdateTaskRequest(HttpServletRequest req) {
+        // Lấy ID từ hidden input
+        String idStr = req.getParameter("id");
+        if (idStr != null && !idStr.isEmpty()) {
+            this.id = Integer.parseInt(idStr);
+        }
 
-		String deadlineStr = req.getParameter("deadline");
-		if (deadlineStr != null && !deadlineStr.isEmpty()) {
-			this.deadline = Date.valueOf(deadlineStr);
-		}
-	}
+        this.task = req.getParameter("task");
+        this.categoryName = req.getParameter("categoryName");
 
-	public int getId() {
-		return id;
-	}
+        String deadlineStr = req.getParameter("deadline");
+        if (deadlineStr != null && !deadlineStr.isEmpty()) {
+            this.deadline = Date.valueOf(deadlineStr);
+        }
 
-	public String getTask() {
-		return task;
-	}
+        this.completed = req.getParameter("completed");  // "todo", "inprogress", "completed"
+        this.description = req.getParameter("description");
+    }
 
-	public boolean isCompleted() {
-		return completed;
-	}
+    public int getId() {
+        return id;
+    }
 
-	public String getCategoryName() {
-		return categoryName;
-	}
+    public String getTask() {
+        return task;
+    }
 
-	public Date getDeadline() {
-		return deadline;
-	}
+    public String getCategoryName() {
+        return categoryName;
+    }
 
-	public boolean isValid() {
-		return task != null && !task.trim().isEmpty() && deadline != null;
-	}
+    public Date getDeadline() {
+        return deadline;
+    }
+
+    public String getCompleted() {
+        return completed;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public boolean isValid() {
+        return id > 0 && task != null && !task.trim().isEmpty()
+            && categoryName != null && !categoryName.trim().isEmpty()
+            && completed != null && !completed.trim().isEmpty()
+            && deadline != null;
+    }
 }

@@ -9,17 +9,21 @@ public class User {
 	private String email;
 	private String passwordHash;
 	private Role role;
+	private String fullName;  
+	private String phone;    
 	private Timestamp createdAt;
 
 	public User() {
 	}
 
-	public User(int id, String username, String email, String passwordHash, Role role, Timestamp createdAt) {
+	public User(int id, String username, String email, String passwordHash, Role role, String fullName, String phone, Timestamp createdAt) {
 		this.id = id;
 		this.username = username;
 		this.email = email;
 		this.passwordHash = passwordHash;
 		this.role = role;
+		this.fullName = fullName;
+		this.phone = phone;
 		this.createdAt = createdAt;
 	}
 
@@ -64,7 +68,12 @@ public class User {
 	public Role getRole() {
 		return role;
 	}
+	public String getFullName() { return fullName; }
+	public void setFullName(String fullName) { this.fullName = fullName; }
 
+	public String getPhone() { return phone; }
+	public void setPhone(String phone) { this.phone = phone; }
+	
 	public void setRole(Role role) {
 		this.role = role;
 	}

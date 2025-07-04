@@ -19,7 +19,11 @@ public class AuthDAO {
                 rs.getInt("id"),
                 rs.getString("username"),
                 rs.getString("email"),
-                passwordHash, Role.valueOf(rs.getString("role")), null
+                rs.getString("password_hash"),
+                Role.valueOf(rs.getString("role")),
+                rs.getString("full_name"),
+                rs.getString("phone"),
+                rs.getTimestamp("created_at")
             );
         }
         conn.close();

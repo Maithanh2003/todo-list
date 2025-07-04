@@ -7,15 +7,17 @@ public class Todo {
     private int id;
     private int userId;
     private String task;
-    private boolean completed;
+    private String completed;
     private Timestamp createdAt;
     private Timestamp updatedAt;
     private String categoryName;
     private Date deadline;
-
+    private String description;
+    private String assignedTo;
+    
     public Todo() {}
 
-    public Todo(int id, int userId, String task, boolean completed,
+    public Todo(int id, int userId, String task, String completed,
                 Timestamp createdAt, Timestamp updatedAt, String categoryName, Date deadline) {
         this.id = id;
         this.userId = userId;
@@ -26,6 +28,20 @@ public class Todo {
         this.categoryName = categoryName;
         this.deadline = deadline;
     }
+    
+    public Todo(int id, int userId, String task, String completed,
+            Timestamp createdAt, Timestamp updatedAt,
+            String categoryName, Date deadline, String description) {
+    this.id = id;
+    this.userId = userId;
+    this.task = task;
+    this.completed = completed;
+    this.createdAt = createdAt;
+    this.updatedAt = updatedAt;
+    this.categoryName = categoryName;
+    this.deadline = deadline;
+    this.description = description;
+}
 
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
@@ -36,8 +52,8 @@ public class Todo {
     public String getTask() { return task; }
     public void setTask(String task) { this.task = task; }
 
-    public boolean isCompleted() { return completed; }
-    public void setCompleted(boolean completed) { this.completed = completed; }
+    public String getCompleted() { return completed; }
+    public void setCompleted(String completed) { this.completed = completed; }
 
     public Timestamp getCreatedAt() { return createdAt; }
     public void setCreatedAt(Timestamp createdAt) { this.createdAt = createdAt; }
@@ -50,4 +66,6 @@ public class Todo {
 
     public Date getDeadline() { return deadline; }
     public void setDeadline(Date deadline) { this.deadline = deadline; }
+    public String getDescription() { return description; }
+    public void setDescription(String description) { this.description = description; }
 }
