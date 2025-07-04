@@ -8,6 +8,7 @@ import java.io.IOException;
 
 import com.example.todo.DAO.UserDAO;
 import com.example.todo.model.User;
+import com.example.todo.model.enums.Role;
 
 public class ProfileServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -40,6 +41,10 @@ public class ProfileServlet extends HttpServlet {
             req.getSession().setAttribute("user", currentUser);
 
             req.setAttribute("message", "Profile updated successfully.");
+            if (!Role.ADMIN.equals(currentUser.getRole())) {
+		        resp.sendRedirect("todo");
+		        return;
+		    }
             doGet(req, resp);
         } catch (Exception e) {
             throw new ServletException(e);

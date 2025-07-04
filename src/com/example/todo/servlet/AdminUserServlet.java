@@ -2,6 +2,8 @@ package com.example.todo.servlet;
 
 import com.example.todo.DAO.UserDAO;
 import com.example.todo.model.User;
+import com.example.todo.model.enums.Role;
+
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import java.io.IOException;
@@ -47,6 +49,7 @@ public class AdminUserServlet extends HttpServlet {
             throw new ServletException(e);
         }
     }
+	
 
     private boolean isValidEmail(String email) {
         return email != null && Pattern.matches("^[A-Za-z0-9+_.-]+@(.+)$", email);
